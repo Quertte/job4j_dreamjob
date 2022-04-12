@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PostStore {
     private static final PostStore INST = new PostStore();
 
-    private final AtomicInteger id = new AtomicInteger();
+    private final AtomicInteger id = new AtomicInteger(3);
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private PostStore() {
@@ -21,7 +21,8 @@ public class PostStore {
     }
 
     public void add(Post post) {
-        posts.putIfAbsent(id.incrementAndGet(), post);
+        post.setId(id.incrementAndGet());
+        posts.putIfAbsent(post.getId(), post);
     }
 
     public Post findById(int id) {
