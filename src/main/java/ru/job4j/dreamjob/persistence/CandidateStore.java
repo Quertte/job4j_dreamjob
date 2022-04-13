@@ -1,4 +1,4 @@
-package ru.job4j.dreamjob.store;
+package ru.job4j.dreamjob.persistence;
 
 import ru.job4j.dreamjob.model.Candidate;
 
@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
