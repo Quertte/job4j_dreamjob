@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.persistence;
 
+import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
 
 import java.util.Collection;
@@ -7,8 +8,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
 public class CandidateStore {
-    private static final CandidateStore INST = new CandidateStore();
 
     private final AtomicInteger id = new AtomicInteger(3);
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
@@ -17,10 +18,6 @@ public class CandidateStore {
         candidates.put(1, new Candidate(1, "Andrew"));
         candidates.put(2, new Candidate(2, "Petr"));
         candidates.put(3, new Candidate(3, "Stas"));
-    }
-
-    public static CandidateStore instOf() {
-        return INST;
     }
 
     public Collection<Candidate> findAll() {
