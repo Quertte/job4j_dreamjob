@@ -5,7 +5,7 @@ import ru.job4j.dreamjob.model.Post;
 import ru.job4j.dreamjob.persistence.PostStore;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.util.List;
+import java.util.Collection;
 
 @ThreadSafe
 @Service
@@ -29,7 +29,7 @@ public class PostService {
         store.update(post);
     }
 
-    public List<Post> findAll() {
-        return (List<Post>) store.findAll();
+    public Collection<Post> findAll() {
+        return store.findAll();
     }
 }

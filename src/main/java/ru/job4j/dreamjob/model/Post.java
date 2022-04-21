@@ -6,12 +6,21 @@ import java.util.Objects;
 public class Post {
     private int id;
     private String name;
+    private boolean visible;
     private String description;
     private final LocalDateTime created = LocalDateTime.now();
 
     public Post(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public int getId() {

@@ -5,7 +5,7 @@ import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.persistence.CandidateStore;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.util.List;
+import java.util.Collection;
 
 @ThreadSafe
 @Service
@@ -29,7 +29,7 @@ public class CandidateService {
         store.update(candidate);
     }
 
-    public List<Candidate> findAll() {
-        return (List<Candidate>) store.findAll();
+    public Collection<Candidate> findAll() {
+        return store.findAll();
     }
 }
