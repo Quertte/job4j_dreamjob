@@ -1,30 +1,17 @@
 package ru.job4j.dreamjob.model;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Post {
+public class City {
     private int id;
     private String name;
-    private boolean visible;
-    private City city;
-    private String description;
-    private final LocalDateTime created = LocalDateTime.now();
 
-    private Post() {
+    public City() {
     }
 
-    public Post(int id, String name) {
+    public City(int id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
     }
 
     public int getId() {
@@ -51,8 +38,8 @@ public class Post {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Post post = (Post) o;
-        return id == post.id;
+        City city = (City) o;
+        return id == city.id;
     }
 
     @Override
