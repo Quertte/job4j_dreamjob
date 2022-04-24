@@ -6,10 +6,10 @@ import java.util.Objects;
 public class Post {
     private int id;
     private String name;
-    private boolean visible;
     private City city;
+    private boolean visible;
     private String description;
-    private final LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now();
 
     private Post() {
     }
@@ -17,6 +17,20 @@ public class Post {
     public Post(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Post(int id, String name, City city) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+    }
+
+    public Post(int id, String name, City city, boolean visible, String description) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.visible = visible;
+        this.description = description;
     }
 
     public boolean isVisible() {
@@ -49,6 +63,22 @@ public class Post {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
     }
 
     @Override
