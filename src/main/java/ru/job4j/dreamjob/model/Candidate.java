@@ -7,9 +7,18 @@ public class Candidate {
     private String name;
     private byte[] photo;
 
+    private Candidate() {
+    }
+
     public Candidate(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Candidate(int id, String name, byte[] photo) {
+        this.id = id;
+        this.name = name;
+        this.photo = photo;
     }
 
     public int getId() {

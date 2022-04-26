@@ -2,7 +2,7 @@ package ru.job4j.dreamjob.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.persistence.CandidateStore;
+import ru.job4j.dreamjob.persistence.CandidateDbStore;
 
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.Collection;
@@ -11,9 +11,9 @@ import java.util.Collection;
 @Service
 public class CandidateService {
 
-    private final CandidateStore store;
+    private final CandidateDbStore store;
 
-    public CandidateService(CandidateStore store) {
+    public CandidateService(CandidateDbStore store) {
         this.store = store;
     }
 

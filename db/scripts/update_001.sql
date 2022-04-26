@@ -5,4 +5,10 @@ CREATE table post (
     visible boolean,
     description TEXT,
     created timestamp
-)
+);
+
+CREATE TABLE candidate (
+    id serial primary key,
+    name TEXT,
+    photo bytea
+);
