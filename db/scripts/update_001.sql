@@ -1,4 +1,4 @@
-CREATE table post (
+CREATE table if not exists post (
     id serial PRIMARY KEY,
     name TEXT,
     city_id int,
@@ -7,7 +7,7 @@ CREATE table post (
     created timestamp
 );
 
-CREATE TABLE candidate (
+CREATE TABLE if not exists candidate (
     id serial primary key,
     name TEXT,
     photo bytea

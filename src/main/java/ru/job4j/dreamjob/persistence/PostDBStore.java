@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.City;
 import ru.job4j.dreamjob.model.Post;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -72,7 +69,12 @@ public class PostDBStore {
             ps.setInt(1, id);
             try (ResultSet it = ps.executeQuery()) {
                 if (it.next()) {
-                    return new Post(it.getInt("id"), it.getString("name"));
+                    return new Post(
+                            it.getInt("id"),
+                            it.getString("name"),
+                            new City(it.getInt("city_id")),
+                            it.getBoolean("visible"),
+                            it.getString("description"));
                 }
             }
         } catch (Exception e) {
@@ -92,6 +94,15 @@ public class PostDBStore {
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void clearTable() throws SQLException {
+        try (Connection connection = pool.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(
+                    "delete from post"
+            );
+            statement.execute();
         }
     }
 }

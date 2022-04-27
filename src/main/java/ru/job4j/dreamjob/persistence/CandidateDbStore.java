@@ -7,6 +7,7 @@ import ru.job4j.dreamjob.model.Candidate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -87,6 +88,15 @@ public class CandidateDbStore {
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void clearTable() throws SQLException {
+        try (Connection connection = pool.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(
+                    "delete from candidate"
+            );
+            statement.execute();
         }
     }
 }
