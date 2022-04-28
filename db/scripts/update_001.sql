@@ -12,3 +12,10 @@ CREATE TABLE if not exists candidate (
     name TEXT,
     photo bytea
 );
+
+CREATE TABLE if not exists users(
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    email VARCHAR unique,
+    password TEXT
+);

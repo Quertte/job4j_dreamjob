@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -18,7 +18,7 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-    <title>Работа мечты</title>
+    <title>Dream Job</title>
 </head>
 <body>
 <div class="container">
@@ -30,7 +30,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Главная</a>
+                <a class="nav-item nav-link active" href="#">Главная <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" th:href="@{/posts}">Вакансии</a>
                 <a class="nav-item nav-link" th:href="@{/formAddPost}">Добавить вакансию</a>
                 <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
@@ -39,27 +39,13 @@
             </div>
         </div>
     </nav>
-    <div class="row pt-3">
-        <div class="card" style="width: 100%">
-            <div class="card-header">
-                Редатирование вакансии.
-            </div>
-            <div class="card-body">
-                <form th:action="@{/updatePost}" method="POST" th:object="${post}">
-                    <input type="hidden" name="id" th:field="*{id}"/>
-                    <div class="form-group">
-                        <label for="name">Имя</label>
-                        <input type="text" class="form-control" name="name" id="name" th:field="*{name}">
-                        <label for="city.id">Город</label>
-                        <select class="form-control" id="city.id" name="city.id">
-                            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
-                </form>
-            </div>
-        </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Вы успешно зарегистрированы.</th>
+            </tr>
+            </thead>
     </div>
 </div>
 </body>
-</html>
