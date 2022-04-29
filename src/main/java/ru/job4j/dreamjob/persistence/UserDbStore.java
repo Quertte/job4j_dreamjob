@@ -7,6 +7,7 @@ import ru.job4j.dreamjob.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
 
 @Repository
@@ -39,5 +40,29 @@ public class UserDbStore {
             e.printStackTrace();
         }
         return opt;
+    }
+
+    public Optional<User> findUserByEmailAndPwd(String email, String pwd) {
+        Optional<User> user = Optional.empty();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement(
+                     "select * from users where email = ? and password = ?")
+        ) {
+            ps.setString(1, email);
+            ps.setString(2, pwd);
+            try (ResultSet it = ps.executeQuery()) {
+                if (it.next()) {
+                    user = Optional.of(
+                            new User(
+                                    it.getInt("id"),
+                                    it.getString("name"),
+                                    it.getString("email"),
+                                    it.getString("password")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }
